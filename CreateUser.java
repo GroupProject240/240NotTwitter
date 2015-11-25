@@ -13,17 +13,29 @@ import java.util.*;
  */
 public class CreateUser {
     
-    public static String createUsername() {
+    public static String createUsername(String User) {
     
-     System.out.println("Alright then motherfucker:");
-     
-     Scanner user = new Scanner(System.in);
-     
-     System.out.println("Enter your desired username:");
-     
-     String Username = user.next();
+   
+     String Username = User;
      
      System.out.println(Username + " will be your username for the system.");
+     
+       try{ 
+        String line = null;
+        Character let;
+        
+        
+        File path = new File("account.txt");
+        
+        String contentsToWrite = Username;
+        OutputStream outStream = new FileOutputStream(path);
+        outStream.write(contentsToWrite.getBytes());
+        outStream.close();
+        
+       }
+       catch(IOException e){
+           System.out.println("Sorry, something went wrong. We're working on it tho!");
+       }
      
      
      return Username;
@@ -40,6 +52,23 @@ public class CreateUser {
      String Password= user.next();
      
      System.out.println(Password + " will be your password for the system. DO NOT fucking forget it");
+     
+     try{ 
+        String line = null;
+        Character let;
+        
+        
+        File path = new File("password.txt");
+ 
+        String contentsToWrite = Password;
+        OutputStream outStream = new FileOutputStream(path);
+        outStream.write(contentsToWrite.getBytes());
+        outStream.close();
+        
+       }
+       catch(IOException e){
+           System.out.println("Sorry, something went wrong. We're working on it tho!");
+       }
      
      return Password;
 }
