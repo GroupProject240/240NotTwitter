@@ -40,15 +40,21 @@ public class TestTwitterdude {
  
         
         System.out.println("Welcome to this piece of shit.");
-        System.out.println("Press 1 to create a account");
-        System.out.println("Press 2 to login into your account");
-        System.out.println("Press 3 to do something else that wasnt the last thing");
-        System.out.println("Press 4 to fuck off and quit bothering me");
         
+          
         Scanner in = new Scanner(System.in);
         int i = in.nextInt();
         Random IDgen = new Random();
         
+        
+        while(i != 4);{
+        
+    
+        System.out.println("Press 1 to create a account");
+        System.out.println("Press 2 to login into your account");
+        System.out.println("Press 3 to do something else that wasnt the last thing");
+        System.out.println("Press 4 to fuck off and quit bothering me");
+      
         
         if(i == 1){
             System.out.println("Welcome to the Account Regristration Process./n/n");
@@ -69,9 +75,15 @@ public class TestTwitterdude {
             System.out.println("Password: "+Jack.getPassword());
             System.out.println("Account No.: "+Jack.getId());
             
+            if(i == 2){
+                Login.Login();
+                
+            }
+            
             
             
         }
+    }
         
         
         

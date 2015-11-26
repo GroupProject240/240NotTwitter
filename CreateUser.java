@@ -25,10 +25,10 @@ public class CreateUser {
         Character let;
         
         
-        File path = new File("account.txt");
+       String Userpath = "account.txt";
         
         String contentsToWrite = Username;
-        OutputStream outStream = new FileOutputStream(path);
+        OutputStream outStream = new FileOutputStream(Userpath);
         outStream.write(contentsToWrite.getBytes());
         outStream.close();
         
@@ -58,10 +58,10 @@ public class CreateUser {
         Character let;
         
         
-        File path = new File("password.txt");
+        String Passpath = "password.txt";
  
         String contentsToWrite = Password;
-        OutputStream outStream = new FileOutputStream(path);
+        OutputStream outStream = new FileOutputStream(Passpath);
         outStream.write(contentsToWrite.getBytes());
         outStream.close();
         
