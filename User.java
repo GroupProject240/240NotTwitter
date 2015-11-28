@@ -1,16 +1,17 @@
 public class User {
-    private Long id;
-    private String username;
+    private String id;
+    protected String username;
     private String password;
     
-    public Long getId() 
+    
+    public String getId() 
         {
             return id;
 	}
 
-	public void setId(Long id) 
+	public void setId(String uniqueID) 
         {
-            this.id = id;
+            this.id = uniqueID;
       	}
 
 	public String getPassword() 
