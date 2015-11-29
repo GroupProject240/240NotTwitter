@@ -26,9 +26,11 @@ public class CreateUser {
         
         
        String Userpath = "account.txt";
+       String Spacer = "\n";
         
         String contentsToWrite = Username;
         OutputStream outStream = new FileOutputStream(Userpath);
+        outStream.write(Spacer.getBytes());
         outStream.write(contentsToWrite.getBytes());
         outStream.close();
         
@@ -42,9 +44,7 @@ public class CreateUser {
 }
     
      public static String createPassword() {
-    
-     System.out.println("Step two bitch:");
-     
+        
      Scanner user = new Scanner(System.in);
      
      System.out.println("Enter your desired password:");
@@ -59,9 +59,11 @@ public class CreateUser {
         
         
         String Passpath = "password.txt";
+        String Spacer = "\n";
  
         String contentsToWrite = Password;
         OutputStream outStream = new FileOutputStream(Passpath);
+        outStream.write(Spacer.getBytes());
         outStream.write(contentsToWrite.getBytes());
         outStream.close();
         
