@@ -78,7 +78,7 @@ public class AccLoad {
         }
     }
     
-    public static void loadAccountID(ArrayList<Long> AccountID){
+    public static void loadAccountID(ArrayList<String> AccountID){
         
         File accountID = new File("accountID.txt");
         String accIDFile = "accountID.txt";
@@ -95,8 +95,7 @@ public class AccLoad {
             try (BufferedReader bufferedReader = new BufferedReader(fileReader)) {
                         while((line = bufferedReader.readLine()) !=null) {
                                 String IDN = line;
-                                Long ID = Long.parseLong(line, 10);
-                                AccountID.add(ID);
+                                AccountID.add(IDN);
                                 Linenum++;
                         }
             }
@@ -111,3 +110,4 @@ public class AccLoad {
                                 
     }
 }
+

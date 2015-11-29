@@ -29,7 +29,7 @@ public class CreateUser {
        String Spacer = "\n";
         
         String contentsToWrite = Username;
-        OutputStream outStream = new FileOutputStream(Userpath);
+        OutputStream outStream = new FileOutputStream(Userpath, true);
         outStream.write(Spacer.getBytes());
         outStream.write(contentsToWrite.getBytes());
         outStream.close();
@@ -62,7 +62,7 @@ public class CreateUser {
         String Spacer = "\n";
  
         String contentsToWrite = Password;
-        OutputStream outStream = new FileOutputStream(Passpath);
+        OutputStream outStream = new FileOutputStream(Passpath, true);
         outStream.write(Spacer.getBytes());
         outStream.write(contentsToWrite.getBytes());
         outStream.close();
@@ -75,6 +75,29 @@ public class CreateUser {
      return Password;
 }
     
+     public static String createUserID(){
+         
+         String uniqueID = UUID.randomUUID().toString();
+         try{
+             
+    
+            String AccIDPath = "accountID.txt";
+            String Spacer = "\n";
+
+            String contentsToWrite = uniqueID;
+            OutputStream outStream = new FileOutputStream(AccIDPath, true);
+            outStream.write(Spacer.getBytes());
+            outStream.write(contentsToWrite.getBytes());
+            outStream.close();
+        
+        
+        }
+         catch(IOException e){
+             System.out.println("Sorry, something went wrong. We're working on it tho!");
+         }
+         
+         return uniqueID;
+     }
     
     
 }
