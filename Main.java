@@ -21,24 +21,42 @@ public class Main
         int i = in.nextInt();
         
         if(i == 1){
-            User Jack = new User();
-            String usName = CreateUser.createUsername();
-            String paWord = CreateUser.createPassword();
-            Jack.setUsername(usName);
-            Jack.setPassword(paWord);
-            String uniqueID = UUID.randomUUID().toString();
-            Jack.setId(uniqueID);
+        	Scanner user = new Scanner(System.in);
             
-            System.out.println("You've created an account!");
-            System.out.println("Here are your details below:");
+            System.out.println("Enter your desired username:");
+            	String Username = user.next();
             
-            System.out.println("Username: "+Jack.getUsername());
-            System.out.println("Password: "+Jack.getPassword());
-            System.out.println("Account No.: "+Jack.getId());
-            
-            
-            
+       	 System.out.println("Enter your desired password:");
+       	 	String Password = user.next();
+       	 
+            BufferedWriter writer = null;
+            try
+            	{
+                writer = new BufferedWriter( new FileWriter("user.txt"));
+                writer.write(Username);
+                writer.write(" ");
+                writer.write(Password);
+            	}
+            catch ( IOException e){}
+            finally
+            {
+                try
+                	{
+                    if ( writer != null)
+                    writer.close( );
+                	}
+                catch ( IOException e){}
+            }
+
+        }else if(i == 2){
+        	
+        }else if(i == 3){
+        	
+        }else if(i == 4){
+        	
+        }else{
+        	System.out.println("Invalid selection");
         }
-        return;                
+                     
     }
  }
