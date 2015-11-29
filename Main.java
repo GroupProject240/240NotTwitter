@@ -70,8 +70,10 @@ public class Main
         
         if(i == 2){
             boolean login = AccLogin.Login(Accounts, Passwords, AccountID);
-            if(login = true){
-            System.out.println("***Login Completed.***");
+            
+            if(login == true){
+            System.out.println("**Login Successful.**");
+            System.out.println("***Loading...***\n\n");
             ///Start Program
             
             }
