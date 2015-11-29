@@ -1,47 +1,70 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package testtwitterdude;
+// User Info Class File
+// Alex Dudley
 
-/**
- *
- * @author mdavis5
- */
-public class User {
-    private Long id;
+public class User
+    {
+    // username should be more than 5 characters,
+    // less than / equal to 13 characters,
+    // and should use letters and numbers
     protected String username;
-    private String password;
+    // password should be more than 6 characters,
+    // less than / equal to 20 characters,
+    // use any characters but requires numbers
+    protected String password;
+    protected boolean isGhost;
+    protected String ID;
     
+    User()
+        {
+        username = "??????";
+        password = "NotARealPassword";
+        ID = "0000000";
+        isGhost = false;
+        }
     
-    public Long getId() 
+    public void ghostBrowse()
         {
-            return id;
-	}
-
-	public void setId(Long id) 
+        username = "Napstablookster";
+        password = "JustAGhostlyPassword";
+        ID = "SPOOOPY";
+        isGhost = true;
+        }
+    
+    public void reset()
         {
-            this.id = id;
-      	}
-
-	public String getPassword() 
+        username = "??????";
+        password = "NotARealPassword";
+        ID = "0000000";
+        isGhost = false;
+        }
+    
+    public void setUserName(String inputName)
         {
-            return password;
-      	}
-
-	public void setPassword(String password) 
+        username = inputName;
+        }
+    
+    public void setPassword(String inputPass)
         {
-            this.password = password;
-      	}
-
-	public String getUsername() 
+        password = inputPass;
+        }
+    
+    public void setID(String inputID)
         {
-            return username;
-      	}
-
-	public void setUsername(String username) 
+        ID = inputID;
+        }
+    
+    public String getUserName()
         {
-            this.username = username;
-      	}
-}
+        return username;
+        }
+    
+    public String getPassword()
+        {
+        return password;
+        }
+    
+    public String getID()
+        {
+        return ID;
+        }
+    }
