@@ -7,8 +7,15 @@ import java.util.*;
 public class UserPasswordAccessor
     {
     protected ArrayList<User> userInfoList;
+    int size;
     
-    public boolean readPseudoDatabase(String fileName)
+    UserPasswordAccessor()
+        {
+        size = 0;
+        userInfoList = new ArrayList<User>();
+        }
+    
+    public boolean readFile(String fileName)
         {
         try
             {
@@ -26,6 +33,7 @@ public class UserPasswordAccessor
                 redUser.setPassword(tokens[1]);
                 redUser.setID(tokens[2]);
                 userInfoList.add(redUser);
+                size = size+1;
                 }
             in.close();
             return true;
@@ -41,5 +49,27 @@ public class UserPasswordAccessor
     public void addAccount(User nUser)
         {
         userInfoList.add(nUser);
+        size = size+1;
+        }
+    
+    public boolean saveToFile(String fileName)
+        {
+        try
+            {
+            PrintWriter log = new PrintWriter(fileName, "UTF-8");
+            for (int i = 0; i < size; i++)
+                {
+                // Completely renews the file, so the file will even be stored in order
+                log.println(userInfoList.get(i).getUserName()+" "+userInfoList.get(i).getPassword()+" "+userInfoList.get(i).getID());
+                }
+            log.close();
+            return true;
+            }
+        catch (Exception e)
+            {
+            // I honestly have no idea how this would happen. The file existed when we opened it up.
+            System.out.println("Critical Error in creating UserPasswordPSEUDODATABASE.txt, contact system administrator to troubleshoot.");
+            return false;
+            }
         }
     }
