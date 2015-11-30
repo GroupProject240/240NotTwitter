@@ -7,8 +7,13 @@ public class Main
     {
     public static void main(String[] args)
         {
+        final String UPAFile = "UserPasswordPSEUDODATABASE.txt";
+        final String PMAFile = "UserPostPSEUDODATABASE.txt";
         UserPasswordAccessor UPA = new UserPasswordAccessor();
         PostMessageAccessor PMA = new PostMessageAccessor();
+        UPA.readFile(UPAFile);
+        PMA.readFile(PMAFile);
+        
         
         System.out.println("Welcome to Silver Quotes!");
         Scanner in = new Scanner(System.in);
@@ -17,13 +22,13 @@ public class Main
         
         while (run == true)
             {
-            System.out.println("(C)reate an account");
-            System.out.println("(L)ogin to your account");
-            System.out.println("(G)host browse");
-            System.out.println("(E)xit Silver Quotes");
+            System.out.println("(c)reate an account");
+            System.out.println("(l)ogin to your account");
+            System.out.println("(g)host browse");
+            System.out.println("(e)xit Silver Quotes");
             String input = in.nextLine();
     
-            if(input == "C")
+            if(input.equals("c"))
                 {
                 String inName;
                 String inPass;
@@ -54,22 +59,28 @@ public class Main
                 System.out.println("Account No.: "+nUser.getID());
                 }
             
-            if (input == "L")
+            if (input.equals("l"))
                 {
                 System.out.println("Despite being an inherent part of a Twitter Clone, this functionality is unavailable at this time~");
                 }
             
-            if (input == "G")
+            if (input.equals("g"))
                 {
                 System.out.println("Despite being an inherent part of a Twitter Clone, this functionality is unavailable at this time~");
                 }
             
-            if (input == "E")
+            if (input.equals("e"))
                 {
                 System.out.println("Thanks for using Silver Quotes, have a wonderful day~");
                 run = false;
                 }
+            else
+                {
+                System.out.println("Sorry, please enter a valid command~");
+                }
             }
         in.close();
-        }
+        // GOTTA REMEMBER TO REMEMBER WHAT JUST HAPPENED DURING THIS USE OF THE PROGRAM
+        UPA.saveToFile(UPAFile);
+        PMA.saveToFile(PMAFile);}
     }
