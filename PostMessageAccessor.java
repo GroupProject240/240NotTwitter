@@ -59,7 +59,19 @@ public class PostMessageAccessor
             return false;
             }
         }
-
+    
+    public ArrayList<Post> getPublicPosts()
+        {
+        ArrayList<Post> publicPosts = new ArrayList<Post>();
+        for (int i = 0; i < size; i++)
+            {
+            if (postInfoList.get(i).getStatus().equals("public"))
+                {
+                publicPosts.add(postInfoList.get(i));
+                }
+            }
+        return publicPosts;
+        }
     
     public boolean saveToFile(String fileName)
         {
