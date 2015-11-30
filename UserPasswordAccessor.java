@@ -7,11 +7,11 @@ import java.util.*;
 public class UserPasswordAccessor
     {
     protected ArrayList<User> userInfoList;
-    int size;
+    protected int sizeUFL;
     
     UserPasswordAccessor()
         {
-        size = 0;
+        sizeUFL = 0;
         userInfoList = new ArrayList<User>();
         }
     
@@ -19,6 +19,7 @@ public class UserPasswordAccessor
         {
         try
             {
+            System.out.println("Hello there~");
             FileInputStream fStream = new FileInputStream(fileName);
             DataInputStream in = new DataInputStream(fStream);
             BufferedReader buffRed = new BufferedReader(new InputStreamReader(in));
@@ -26,17 +27,20 @@ public class UserPasswordAccessor
             while ((currLine = buffRed.readLine()) != null)
                 {
                 String[] tokens = currLine.split(" ");
-                // line of input gets split into tokens 0-2, one for username, password, and ID, respectively
+                // line of input gets split into tokens 0-3, one for username, password, ID, and subscriptions, respectively
                 
                 User redUser = new User();
                 redUser.setUserName(tokens[0]);
                 redUser.setPassword(tokens[1]);
                 redUser.setID(tokens[2]);
+                redUser.setSubscriptions(tokens[3]);
                 userInfoList.add(redUser);
-                size = size+1;
+                sizeUFL = sizeUFL+1;
                 }
             in.close();
+            System.out.println("Goobii~");
             return true;
+
             }
             
         catch (Exception e)
@@ -49,7 +53,7 @@ public class UserPasswordAccessor
     public void addAccount(User nUser)
         {
         userInfoList.add(nUser);
-        size = size+1;
+        sizeUFL = sizeUFL+1;
         }
     
     public boolean saveToFile(String fileName)
@@ -57,10 +61,33 @@ public class UserPasswordAccessor
         try
             {
             PrintWriter log = new PrintWriter(fileName, "UTF-8");
-            for (int i = 0; i < size; i++)
+            for (int i = 0; i < sizeUFL; i++)
                 {
                 // Completely renews the file, so the file will even be stored in order
-                log.println(userInfoList.get(i).getUserName()+" "+userInfoList.get(i).getPassword()+" "+userInfoList.get(i).getID());
+                // need to create string that has all subscriptions, appropriately demarcated
+                
+                // need to make the subscription part to add to file
+                // if they have none, will simply write ###, else will create subscription signifier
+                String subString = "";
+                if (userInfoList.get(i).hasNoSubs() == true)
+                    {
+                    subString = "###";
+                    }
+                else
+                    {
+                    ArrayList<String> tempSubList = userInfoList.get(i).getSubscriptions();
+                    for (int j = 0; j < sizeUFL; j++)
+                        {
+                        // adds subscription username to what's being added to string
+                        subString.concat(tempSubList.get(j));
+                        if (j != sizeUFL)
+                            {
+                            // only adds this ~ delimiter if there are more subscriptions to be added
+                            subString.concat("~");
+                            }
+                        }
+                    }
+                log.println(userInfoList.get(i).getUserName()+" "+userInfoList.get(i).getPassword()+" "+userInfoList.get(i).getID()+" "+subString);
                 }
             log.close();
             return true;
