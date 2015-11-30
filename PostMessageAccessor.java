@@ -35,7 +35,7 @@ public class PostMessageAccessor
                 Post redPost = new Post();
                 redPost.setPoster(tokens[0]);
                 // needs to determine if status is public or private
-                if (tokens[1] == "public")
+                if (tokens[1].equals("public"))
                     {
                     redPost.setStatusAsPublic();
                     }
