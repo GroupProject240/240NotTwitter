@@ -103,4 +103,16 @@ public class User
         {
         return subscriptionList;
         }
+        
+            public boolean hasNoSubs()
+        {
+        if (sizeSL == 0)
+            {
+            return true;
+            }
+        else
+            {
+            return false;
+            }
+        }
     }
