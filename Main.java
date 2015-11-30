@@ -2,6 +2,7 @@
 // Alex, Andrew, Marcus, David
 
 import java.util.*;
+import java.io.*;
 
 public class Main
     {
@@ -33,10 +34,16 @@ public class Main
                 String inName;
                 String inPass;
                 System.out.println("Please input desired username:");
-                
+                                
                 input = in.nextLine();
+                    if(input.contains("~")){
+                    System.out.println("Invalid username");
+                    input = in.nextLine();
+                }
+                //"!", "@", "#", "$", "%", "^", "&", "*", " ", ",", "-", "=", "+", "?"
                 // need to make sure input for username is alphanumeric, within size requirements,
                 // and is not already in use
+                
                 inName = input;
                 System.out.println("Please input desired password:");
                 input = in.nextLine();
